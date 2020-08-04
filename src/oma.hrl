@@ -1,0 +1,1 @@
+-record(oma, {category, type}).
