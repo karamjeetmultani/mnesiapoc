@@ -20,6 +20,9 @@ new(F,L)->
 	io:format("~n ?MODULE:~p,~n ?MODULE_STRING:~p~n, ?FILE:~p~n, ?LINE:~p~n, ?MACHINE:~p~n, ?FUNCTION_NAME:~p~n, ?FUNCTION_ARITY:~p~n, ?OTP_RELEASE:~p~n, inserting new records", [?MODULE, ?MODULE_STRING, ?FILE, ?LINE, ?MACHINE, ?FUNCTION_NAME, ?FUNCTION_ARITY, ?OTP_RELEASE]).
 
 index()->
+	 % io:format("current path is: ~p", [file:list_dir(pwd)]),
+
+
 	 F = fun()-> mnesia:select(oma, [{'_',[],['$_']}]) end,
 	 REC = mnesia:activity(transaction, F),
 	io:format("~n ?MODULE:~p,~n ?MODULE_STRING:~p~n, ?FILE:~p~n, ?LINE:~p~n, ?MACHINE:~p~n, ?FUNCTION_NAME:~p~n, ?FUNCTION_ARITY:~p~n, ?OTP_RELEASE:~p~n, oma table records ~n~p", [?MODULE, ?MODULE_STRING, ?FILE, ?LINE, ?MACHINE, ?FUNCTION_NAME, ?FUNCTION_ARITY, ?OTP_RELEASE, REC]).
